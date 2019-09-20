@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Display First and Last Letter form Line
+
+input="/root/shellscript/txttest.txt"
+
+
+while read -r line
+do
+  echo "$line" >> 123.txt
+
+c="/root/shellscript/123.txt"
+
+output="/root/shellscript/123.txt"
+
+a=`cut -c -1 <  "$output"`
+
+b=`rev "$output" | cut -c -1`
+
+echo $a $b
+
+echo
+
+cat /dev/null > "$c"
+
+done < "$input"
