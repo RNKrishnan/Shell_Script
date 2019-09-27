@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#Script delete files 90days old
+
+rm -rf /root/proscript/old.txt
+
+find /root/proscript -mtime +90 -exec ls -l {} \; > /root/proscript/old.txt
+
+find /root/proscript -mtime +90 -exec rm {} \;
