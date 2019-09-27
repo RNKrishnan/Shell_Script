@@ -1,0 +1,75 @@
+#!/bin/bash
+
+#Single IP ping test
+
+echo Single IP ping test
+
+ping -c1 8.8.8.8
+
+if [ $? -eq 0 ]
+
+then
+
+        echo ok
+
+else
+
+        echo not ok
+fi
+echo
+echo end
+
+#Single IP ping test without ping output
+echo Single IP ping test without ping output
+echo
+ping -c1 8.2.2.8 &> /dev/null
+
+if [ $? -eq 0 ]
+
+then
+
+        echo ok
+
+else
+
+        echo not ok
+fi
+echo
+echo end
+echo
+
+#Single IP ping test with define variable
+echo Single IP ping test with define variable
+host="8.8.4.4"
+ping -c1 $host &> /dev/null
+
+if [ $? -eq 0 ]
+
+then
+
+        echo ok
+
+else
+
+        echo not ok
+fi
+
+echo
+echo end
+echo
+
+#Single IP ping test with read variable
+echo Single IP ping test with read variable
+read host
+ping -c1 $host &> /dev/null
+
+if [ $? -eq 0 ]
+
+then
+
+        echo ok
+
+else
+
+        echo not ok
+fi
