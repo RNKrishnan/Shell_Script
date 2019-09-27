@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Multiple IP ping test
+
+host="/root/proscript/iplist"
+
+
+for ip in $( cat $host )
+
+do
+
+        ping -c1 $ip &> /dev/null
+
+        if [ $? -eq 0 ]
+
+        then
+
+                echo $ip is ok
+
+        else
+
+                echo $ip is not ok
+
+        fi
+
+done
