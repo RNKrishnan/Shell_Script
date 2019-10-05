@@ -1,0 +1,104 @@
+#!/bin/bash
+
+# this script used to count the number
+echo Script 1
+echo
+echo This Script Count the Number
+echo
+
+        for i in {1..10}
+        do
+
+                echo $i
+                sleep 1
+        done
+
+echo Script 2
+echo
+echo This Script Count the Number from user inputs
+echo
+
+echo Enter the last number to count:
+
+read n
+echo
+echo Let start the count
+
+        for i in $(seq 1 $n)
+        do
+                echo
+                echo $i
+                sleep 1
+        done
+
+
+echo Script 3
+echo
+echo This Script Create files number of file from user inputs
+
+echo
+
+echo Enter the start name of file
+
+echo Enter the start name of file
+
+read s
+echo
+
+echo Enter how many file do you need
+
+read n
+
+        for i in $(seq 1 $n)
+        do
+
+                touch $s$i.txt
+                echo File $s$i.txt is created
+                sleep 1
+        done
+
+
+echo Script 4
+echo
+echo This Script to change the permission for multiple files
+
+
+        for i in *.sh
+        do
+
+                chmod a+x $i
+                echo permission changed for $i
+        done
+
+echo Script 5
+
+echo This script to rename the files
+
+
+        for i in *.txt
+        do
+
+                mv $i ${i%.txt}.sh   #"%" include the ".txt" as a file name
+                echo renamed $i
+        done
+
+echo Script 5
+
+echo This script going to check file exist or not
+
+
+Files="Ramya1* Ramya2* Ramya3* Ramya4* Ramya5* aaaa* "
+
+echo
+
+        for i in $Files
+        do
+
+                if [ ! -e $i ]
+                then
+                        echo $i file is do not exist
+                else
+                        echo $i file is avilable
+                fi
+        done
+
