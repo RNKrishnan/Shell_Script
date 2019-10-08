@@ -1,0 +1,52 @@
+#!/bin/bash
+
+#fetch the logged user today
+
+today=`date | awk '{print $1,$2}'`
+se=`date | awk '{print $3}'`
+
+chk=`date | awk '{print $3}' | wc -m`
+
+echo $chk
+
+        if [ $chk -le 2 ]
+
+        then
+                last | grep "$today  $se"
+
+#               grep "$today  $se" /root/proscript/txt
+
+        else
+                last | grep "$today  $se"
+
+        fi
+
+
+
+
+# Now we fetch the logged user by user given date
+
+echo "Enter day e.g(Mon):"
+read a
+echo
+
+echo "enter month e.g (Aug):"
+read m
+echo
+
+echo "enter date e.g (8 or 26)"
+read de
+echo
+
+
+        if [ $de -lt 10 ]
+        then
+                last | grep "$a $m  $de"
+
+
+        else
+                last | grep "$a $m $de"
+
+        fi
+
+
