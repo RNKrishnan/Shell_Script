@@ -1,0 +1,27 @@
+
+
+#!/bin/bash
+
+#Compare /etc/passwd file and /home dirctory
+
+        for i in /home/*
+
+        do
+
+                chk=$(grep -c "$i" /etc/passwd)
+
+
+                        if [ $chk -ge 1 ]
+                        then
+
+                                echo $i is avilable in paaswd file
+
+                        else
+
+                                echo please open dir.txt file to check unwanted dir in home file system
+
+                                echo $i is not avilable in home file system >> dir.txt
+
+                        fi
+
+        done
