@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# This script to fetch the error from log file
+
+
+# we should run the script background only becuse it's keep on check the messages log
+
+
+# command to run the script background "nohup /root/proscript/fetcherrorfromlog &"
+
+#To check the script running status "ps -ef | grep -i fetcherrorfromlog"
+
+#If you want foreground the script "fg" command
+
+# We can put the errors in messages log manually using "logger -t Error (or) infromation heading  "error details or information details"
+
+#logger -t Error "Nava test error"
+
+##logger -t warning "Nava test warning"
+
+#( tail -fn0 this command to fetch the log file from last, "-fn0" this option infrom to tail command check only latest time stamp log not from the begining)
+
+
+
+        tail -fn0 /var/log/messages | while read line
+        do
+
+        echo $line | egrep -i "error|Invalid|down"
+
+                if [ $? -eq 0 ]
+                then
+
+                        echo $line >> /root/proscript/logerror
+
+                else
+
+                        echo "No ERROR found in messages log"
+
+                fi
+        done
