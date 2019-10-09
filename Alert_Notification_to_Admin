@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#This script send the alert notification to user and admin
+
+maildl="nava.ruler@gmail.com,nava.ruler@hotmail.com"
+
+        if [ -s /root/proscript/logerror ]
+        then
+
+                cat /root/proscript/logerror | sort | uniq | mail -s "syslog messages" $maildl
+
+        else
+
+                echo NO errors in syslog | mail -s "syslog messages" $maildl
+        fi
+
+
+#we need mail relay server then only we can run the script
+
+# uniq command used to remove repeated alerts
