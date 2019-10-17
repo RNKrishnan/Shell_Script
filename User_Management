@@ -1,0 +1,117 @@
+#!/bin/bash
+
+#script 1
+
+#this script is used to creat the user in linux
+
+
+echo Please enter the user name:
+
+read u
+
+useradd $u
+
+echo $u account has been created
+
+#script 2
+
+#This scrip is used to create the user and check if the user exist or not
+
+echo This scrip is used to create the user and check if the user exist or not
+
+echo please enter username:
+
+read a
+
+grep $a /etc/passwd &> /dev/null
+
+
+       if [ $? -eq 0 ]
+       then
+
+               echo $a user already exist
+               exit 0
+       else
+               useradd $a
+
+               echo $a account has been created
+       fi
+
+#Script 3
+
+# This script used to add discription during user creation
+
+echo  This script used to add discription during user creation
+
+echo
+echo please enter the user name :
+
+read b
+
+grep $b /etc/passwd &> /dev/null
+
+       if [ $? -eq 0 ]
+       then
+               echo $b user already exist in /etc/passwd file
+               exit 0
+
+       else
+
+               echo please provde your discription:
+               read des
+
+               useradd $b -c "$des"
+               echo user $b has been created with discription
+       fi
+
+
+
+#Script 4
+
+# This script is used to assign user id manually during user creation
+
+echo This script is used to assign user id manually during user creation
+
+echo
+
+echo please enter user name:
+
+read c
+
+grep $c /etc/passwd &> /dev/null
+
+        if [ $? -eq 0 ]
+        then
+               echo $b user already exist in /etc/passwd file
+              exit 0
+        fi
+
+echo "do you want assign UID manually to the user (y/n)?"
+
+read yn
+
+        if [ $yn == y ]
+        then
+
+                echo please enter UID for the user
+                read ID
+
+                grep $ID /etc/passwd &> /dev/null
+
+                        if [ $? -eq 0 ]
+                        then
+
+                                echo $ID already exist
+                                exit 0
+                        fi
+
+                useradd $c -u $ID
+                echo "user $c has been created with UID of $ID"
+
+        else
+
+                useradd $c
+                echo user $c has been created without manual UID
+        fi
+
+
