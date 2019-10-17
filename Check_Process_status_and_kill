@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# This script is used to check the status and kill the process
+
+# Here we are going to create dummy process call "sleep" is the command "sleep 800"
+
+#script 1
+
+# this script check the status and kill the process usig xargs
+
+ps -ef | grep "sleep 800"
+echo
+ps -ef | grep "sleep 800" | grep -v grep
+
+echo
+
+ps -ef | grep "sleep 800" | grep -v grep | awk '{print $2}'
+
+echo
+
+ps -ef | grep "sleep 800" | grep -v grep | awk '{print $2}' | xargs -I {} kill {}
+
+        if [ $? -eq 0 ]
+        then
+                echo process Killed
+        else
+                echo process does not exist
+        fi
+
+
+
+#script 2
+
+# This script check the status and kill the process usig for
+
+a=`ps -ef | grep "sleep 800" | grep -v grep | awk '{print $2}'`
+
+        for i in $a
+        do
+                kill $i
+
+                echo $i process killed
+        done
