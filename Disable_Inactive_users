@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#This command is used to disable the inactive users
+
+a=`lastlog | tail -n+2 | grep "test" | awk '{print $1}'`
+
+
+# Here "lastlog" is the command to fetch the details of logged user in system
+# Here "tail -n+2" is the command to sikp the heading columon
+
+
+        for i in $a
+        do
+                usermod -L $i
+                echo user $i has been disabled
+        done
+
+
+#single command
+
+lastlog | tail -n+2 | grep "test" | awk '{print $1}'| xargs -I{} usermod -L {}
